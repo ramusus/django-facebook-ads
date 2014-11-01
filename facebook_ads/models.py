@@ -92,7 +92,6 @@ class AdUser(FacebookGraphModel):
     class Meta:
         verbose_name = 'Facebook ad user permissions'
         verbose_name_plural = 'Facebook ad users permissions'
-        ordering = ['role']
         unique_together = ('account','uid')
 
     account = models.ForeignKey('AdAccount', related_name='users')
@@ -110,7 +109,6 @@ class AdAccount(FacebookGraphModel):
     class Meta:
         verbose_name = 'Facebook account'
         verbose_name_plural = 'Facebook accounts'
-        ordering = ['account_id']
 
     account_id = models.BigIntegerField(help_text='The ID of the ads account', unique=True)
     name = models.CharField(max_length=100, blank=True, help_text='Name of the account; note that many accounts are unnamed, so this field may be empty')
@@ -232,7 +230,6 @@ class AdCampaign(FacebookGraphModel):
     class Meta:
         verbose_name = 'Facebook ad campaign'
         verbose_name_plural = 'Facebook ad campaigns'
-        ordering = ['name']
 
     campaign_id = models.BigIntegerField(help_text='The campaign ID', unique=True)
     account = models.ForeignKey(AdAccount, related_name='campaigns', help_text='Used to create another campaign with the same account ID')
@@ -285,7 +282,6 @@ class AdCreative(FacebookGraphModel):
     class Meta:
         verbose_name = 'Facebook ad creative'
         verbose_name_plural = 'Facebook ad creatives'
-        ordering = ['creative_id']
 
     creative_id = models.BigIntegerField(help_text='Required in order to use an existing creative from the creative library', unique=True)
     name = models.CharField(max_length=100, help_text='The name of the creative in the creative library')
@@ -390,7 +386,6 @@ class AdGroup(FacebookGraphModel):
     class Meta:
         verbose_name = 'Facebook ad group'
         verbose_name_plural = 'Facebook ad groups'
-        ordering = ['name']
 
     adgroup_id = models.BigIntegerField(help_text='The ID of the ad group', unique=True)
     ad_id = models.BigIntegerField(null=True, help_text='ID of the ad group, required for updating ad groups')
@@ -616,7 +611,6 @@ class AdStatistic(FacebookGraphModel):
     class Meta:
         verbose_name = 'Facebook ad statistic report'
         verbose_name_plural = 'Facebook ad statistic reports'
-        ordering = ['statistic_id']
 
     statistic_id = models.CharField(max_length="100", unique=True, help_text='The statistic ID')
 
