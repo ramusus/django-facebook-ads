@@ -334,7 +334,7 @@ class AdCreative(FacebookGraphModel):
     preview_url = models.URLField(
         max_length=100, help_text='The URL to preview the ad, only for the current session user')
     related_fan_page = models.CharField(max_length=100, help_text='Provides social context to a type 1 ad')
-    auto_update = models.BooleanField(
+    auto_update = models.BooleanField(default=None,
         help_text='Boolean true to constantly promote the latest page post and ignore story_id parameter. Boolean false to promote a specific page post by story_id. Required for type 27 ads only.')
     story_id = models.BigIntegerField(
         null=True, blank=True, help_text='The fbid of a page post to use in a type 25 or type 27 ad. This ID can be retrieved by using the graph API to query the posts of the page.')
